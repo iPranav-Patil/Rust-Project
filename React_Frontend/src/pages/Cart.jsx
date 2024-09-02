@@ -15,7 +15,7 @@ const Cart = () => {
           email: email_value,
         });
 
-        console.log("Success:", response.data);
+        // console.log("Success:", response.data);
         setProducts(response.data.cart);
         const newQuantities = {};
         response.data.cart.forEach((item) => {
@@ -70,7 +70,7 @@ const Cart = () => {
       setQuantities(newQuantities);
       await updateQuantityOnBackend(id, category, newQuantities[key]);
     } else {
-      await removeItem(id);
+      await removeItem(id, category);
     }
   };
 
@@ -102,16 +102,18 @@ const Cart = () => {
 
   const removeItem = async (id, category) => {
     const key = `${id}-${category}`;
-    await removeItemFromBackend(key);
+    await removeItemFromBackend(id, category);
     const newProducts = products.filter(
-      (item) => item.id !== id && item.category !== category
+      (item) => `${item.id}-${item.category}` !== `${id}-${category}`
     );
+
     const newQuantities = { ...quantities };
-    delete newQuantities[id];
+    delete newQuantities[key];
     setProducts(newProducts);
     setQuantities(newQuantities);
   };
-  const removeItemFromBackend = async (id) => {
+
+  const removeItemFromBackend = async (id, category) => {
     const email_value = handleCookie();
     if (!email_value) {
       console.error("User is not authenticated.");
@@ -120,7 +122,9 @@ const Cart = () => {
 
     const data = {
       email: email_value,
-      item_name: products.find((item) => item.id === id).name,
+      item_name: products.find(
+        (item) => item.id === id && item.category === category
+      ).name,
     };
 
     try {
@@ -135,7 +139,9 @@ const Cart = () => {
 
   const total = products.reduce(
     (acc, item) =>
-      acc + parseInt(item.price.slice(1), 10) * quantities[item.id],
+      acc +
+      parseInt(item.price.slice(1), 10) *
+        quantities[`${item.id}-${item.category}`],
     0
   );
 
@@ -148,11 +154,6 @@ const Cart = () => {
     e.preventDefault();
     try {
       const email_value = handleCookie();
-      const data = {
-        email: email_value,
-        address: address,
-        number: number,
-      };
       const response = await axios.post("http://127.0.0.1:8000/user_data", {
         email: email_value,
         address: address,
@@ -172,6 +173,7 @@ const Cart = () => {
         <p className="font-bold tracking-wider pb-4 text-3xl p-2">
           Shopping Cart
         </p>
+
         <div>
           <CartCard Products={products} Quantities={quantities} />
         </div>
@@ -353,6 +355,7 @@ const CartCard = ({ Products, Quantities }) => {
                         ({item.rating})
                       </span>
                     </div>
+
                     <div className=" italic font-extralight">
                       Quantity: {Quantities[`${item.id}-${item.category}`]}
                     </div>

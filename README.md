@@ -45,7 +45,7 @@ This is a beginner project that combines Rust and React to create a simple e-com
 1. Navigate to the `Rust_Backend` directory:
 
    ```
-   cd ../Rust_Backend/
+   cd ./backend_rust/
    ```
 
 2. Run the backend server:

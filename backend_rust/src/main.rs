@@ -14,6 +14,10 @@ use routes::*;
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
+
+    let port_str = env::var("PORT").expect("Port does not exist");
+    let port: u16 = port_str.parse().expect("Port must be a number");
+
     let db_url = env::var("MONGODB_URI").expect("MONGODB_URI must be set");
     let client_options = ClientOptions::parse(&db_url).await.unwrap();
     let client = Client::with_options(client_options).unwrap();
@@ -50,7 +54,7 @@ async fn main() -> std::io::Result<()> {
             .service(remove_item)
             .service(user_data)
     })
-    .bind(("127.0.0.1", 8000))?
+    .bind(("127.0.0.1", port))?
     .run()
     .await
 }
@@ -59,10 +63,6 @@ async fn main() -> std::io::Result<()> {
 async fn home() -> impl Responder {
     "Welcome to Server".to_string()
 }
-
-
-
-
 
 // my_project/
 // ├── src/
