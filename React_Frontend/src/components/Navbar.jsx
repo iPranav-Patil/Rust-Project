@@ -35,7 +35,7 @@ const Navbar = () => {
           </div>
           <div className="md:hidden">
             <button
-              className="focus:outline-none hover:text-indigo-700"
+              className="focus:outline-none hover:text-primary"
               onClick={() => setState(!state)}
             >
               {state ? (
@@ -90,7 +90,7 @@ const Navbar = () => {
               {isAuthenticated ? (
                 <li>
                   <div
-                    className="w-4/6 sm:w-full cursor-pointer block py-1 sm:py-3 sm:px-4 font-medium text-center text-white bg-indigo-600 hover:text-black hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow"
+                    className="w-4/6 sm:w-full cursor-pointer block py-1 sm:py-3 sm:px-4 font-medium text-center text-white bg-indigo-600 hover:text-black hover:bg-indigo-500 active:bg-primary active:shadow-none rounded-lg shadow"
                     onClick={() => navigate("/cart")}
                   >
                     Cart
@@ -100,7 +100,7 @@ const Navbar = () => {
                 <li>
                   <div
                     onClick={() => navigate("/login")}
-                    className="cursor-pointer block py-1 px-2 sm:py-3 sm:px-4 font-medium text-center text-white bg-indigo-600 hover:text-black hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow"
+                    className="cursor-pointer block py-1 px-2 sm:py-3 sm:px-4 font-medium text-center text-white bg-indigo-600 hover:text-black hover:bg-indigo-500 active:bg-primary active:shadow-none rounded-lg shadow"
                   >
                     Login
                   </div>

@@ -22,13 +22,13 @@ const HomeProducts = () => {
         <div className="flex gap-4 justify-center items-center p-4">
           <button
             onClick={() => scroll("left")}
-            className="px-4 py-1 bg-black/30 bg-opacity-50 text-white hover:text-indigo-700 text-3xl p-2 focus:outline-none "
+            className="px-4 py-1 bg-black/30 bg-opacity-50 text-white hover:text-primary text-3xl p-2 focus:outline-none "
           >
             &#10094;
           </button>
           <button
             onClick={() => scroll("right")}
-            className="px-4 py-1 bg-black/30 bg-opacity-50 text-white hover:text-indigo-700 text-3xl p-2 focus:outline-none "
+            className="px-4 py-1 bg-black/30 bg-opacity-50 text-white hover:text-primary text-3xl p-2 focus:outline-none "
           >
             &#10095;
           </button>

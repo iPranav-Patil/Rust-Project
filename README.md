@@ -2,6 +2,8 @@
 
 This is a beginner project that combines Rust and React to create a simple e-commerce website. The backend is powered by the Actix web server in Rust, while the frontend is built using React. The project allows users to sign up, log in, browse products, add items to the cart, update quantities, and remove items from the cart. JWT authentication is used to secure the user data.
 
+**Note: This is a learning exercise designed to deepen understanding and practice key concepts, rather than a fully developed project.**
+
 ## Features
 
 - User Authentication (Login/Signup) using JWT.

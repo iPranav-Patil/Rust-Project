@@ -188,7 +188,7 @@ const Cart = () => {
               <input
                 type="text"
                 value={number}
-                className="w-full h-10 rounded-md p-2 bg-[#6e6e6e52] outline-none border-indigo-700 border placeholder-indigo-300 text-indigo-200 focus:border-[3px]"
+                className="w-full h-10 rounded-md p-2 bg-[#6e6e6e52] outline-none border-primary border placeholder-indigo-300 text-indigo-200 focus:border-[3px]"
                 placeholder="Enter 10 digit Contact Number"
                 onChange={(e) => {
                   const value = e.target.value;
@@ -204,7 +204,7 @@ const Cart = () => {
               <input
                 type="text"
                 value={address}
-                className="w-full h-10 rounded-md p-2 bg-[#6e6e6e52] outline-none border-indigo-700 border placeholder-indigo-300  text-indigo-200 focus:border-[3px]"
+                className="w-full h-10 rounded-md p-2 bg-[#6e6e6e52] outline-none border-primary border placeholder-indigo-300  text-indigo-200 focus:border-[3px]"
                 placeholder="Enter Address"
                 onChange={(e) => setAddress(e.target.value)}
               />
@@ -251,7 +251,7 @@ const Cart = () => {
                   <div className="grid grid-cols-4 border-2 border-indigo-600 rounded-lg">
                     <div
                       onClick={() => decrementQuantity(item.id, item.category)}
-                      className="col-span-1 text-center bg-indigo-700 hover:bg-indigo-600 cursor-pointer rounded-l-lg border-r border-indigo-600"
+                      className="col-span-1 text-center bg-primary hover:bg-indigo-600 cursor-pointer rounded-l-lg border-r border-indigo-600"
                     >
                       -
                     </div>
@@ -260,7 +260,7 @@ const Cart = () => {
                     </div>
                     <div
                       onClick={() => incrementQuantity(item.id, item.category)}
-                      className="col-span-1 text-center bg-indigo-700 hover:bg-indigo-600 cursor-pointer rounded-r-lg border-l border-indigo-600"
+                      className="col-span-1 text-center bg-primary hover:bg-indigo-600 cursor-pointer rounded-r-lg border-l border-indigo-600"
                     >
                       +
                     </div>
@@ -312,7 +312,7 @@ const CartCard = ({ Products, Quantities }) => {
             <div className="relative w-full md:w-5/6">
               <input
                 type="text"
-                className="relative rounded-3xl border-2 shadow-lg border-indigo-700 bg-indigo-600 pl-5 pr-10 py-2 w-full focus:outline-none"
+                className="relative rounded-3xl border-2 shadow-lg border-primary bg-indigo-600 pl-5 pr-10 py-2 w-full focus:outline-none"
                 value={searchTerm}
                 onChange={handleSearch}
               />

@@ -57,13 +57,13 @@ const Carousel = () => {
         ))}
       </div>
       <button
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black bg-opacity-50 text-white hover:text-indigo-700 text-2xl p-2 focus:outline-none hover:scale-[1.1] transition-[scale_4s_ease_in_out]"
+        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black bg-opacity-50 text-white hover:text-primary text-2xl p-2 focus:outline-none hover:scale-[1.1] transition-[scale_4s_ease_in_out]"
         onClick={prevSlide}
       >
         &#10094;
       </button>
       <button
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black bg-opacity-50 text-white hover:text-indigo-700 text-2xl p-2 focus:outline-none hover:scale-[1.1] transition-[scale_4s_ease_in_out]"
+        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black bg-opacity-50 text-white hover:text-primary text-2xl p-2 focus:outline-none hover:scale-[1.1] transition-[scale_4s_ease_in_out]"
         onClick={nextSlide}
       >
         &#10095;

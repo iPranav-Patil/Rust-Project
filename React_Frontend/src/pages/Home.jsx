@@ -41,7 +41,7 @@ const Home = () => {
             onClick={() => {
               navigate("/signup");
             }}
-            className="font-bold tracking-wider px-20 py-4 text-white shadow-[2px_2px_20px_0px] border border-white/10  hover:border-white/20 shadow-indigo-700 bg-indigo-700 hover:scale-[1.03] transition-[scale_4000ms_ease_in_out] hover:bg-indigo-600"
+            className="font-bold tracking-wider px-20 py-4 text-white shadow-[2px_2px_20px_0px] border border-white/10  hover:border-white/20 shadow-primary bg-primary hover:scale-[1.03] transition-[scale_4000ms_ease_in_out] hover:bg-indigo-600"
           >
             Get Started
           </button>
