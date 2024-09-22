@@ -26,11 +26,6 @@ const Login = () => {
     }));
   };
 
-  const data = {
-    name: "Pranav Patil",
-    email: "abc@gmail.com",
-    password: "12345",
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
