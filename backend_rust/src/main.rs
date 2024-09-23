@@ -12,24 +12,30 @@ mod routes;
 use routes::*;
 
 #[tokio::main]
-async fn main() -> std::io::Result<()> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenv().ok();
 
-    let port_str = env::var("PORT").expect("Port does not exist");
-    let port: u16 = port_str.parse().expect("Port must be a number");
+    //Port Init
+    let port: u16 = env::var("PORT")
+        .unwrap_or_else(|_| "8000".to_string())
+        .parse()
+        .expect("PORT must be a number");
 
+    //MongoDB Setup
     let db_url = env::var("MONGODB_URI").expect("MONGODB_URI must be set");
     let client_options = ClientOptions::parse(&db_url).await.unwrap();
     let client = Client::with_options(client_options).unwrap();
     println!("\nConnection with DB made successfully...");
+
+    //DB and Collection
     let db = client.database("Ecommerce");
     let user_collection = db.collection::<BioData>("users");
     let appliance_collection = db.collection::<Appliance>("Appliances");
     let men_collection = db.collection::<Men>("Men");
     let women_collection = db.collection::<Women>("Women");
-
     println!("Database found and we are connected with MongoDB...");
 
+    //Actix Web Server Init
     HttpServer::new(move || {
         let cors = Cors::default()
             .allow_any_origin()
@@ -56,7 +62,9 @@ async fn main() -> std::io::Result<()> {
     })
     .bind(("127.0.0.1", port))?
     .run()
-    .await
+    .await?;
+
+    Ok(())
 }
 
 #[get("/home")]
@@ -70,7 +78,7 @@ async fn home() -> impl Responder {
 // │   ├── routes/
 // │   │   ├── mod.rs
 // │   │   ├── set_user.rs
-// │   │   └── test.rs
+// │   │   └── data.rs
 // ├── .env
 // ├── Cargo.toml
 // └── Cargo.lock
