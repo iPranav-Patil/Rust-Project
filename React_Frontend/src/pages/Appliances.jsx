@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Products from "../components/Products";
+import { API_URL } from "../context/Config";
 
 const Appliances = () => {
   const [res, setRes] = useState([]);
@@ -10,7 +11,7 @@ const Appliances = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/appliance");
+        const response = await axios.get(`${API_URL}/appliance`);
         setRes(response.data);
       } catch (err) {
         console.log(err);

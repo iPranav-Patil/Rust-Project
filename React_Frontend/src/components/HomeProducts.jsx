@@ -7,7 +7,7 @@ const HomeProducts = () => {
 
   const scroll = (direction) => {
     if (containerRef.current) {
-      const scrollAmount = 600; // Adjust scroll amount as needed
+      const scrollAmount = 800; 
       containerRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -39,8 +39,8 @@ const HomeProducts = () => {
         className="flex gap-16 p-4 justify-start items-center w-full overflow-x-auto text-black h-full"
         style={{
           overflow: "auto",
-          scrollbarWidth: "none" /* Firefox */,
-          msOverflowStyle: "none" /* Internet Explorer and Edge */,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none" 
         }}
       >
         {productdata.map((product) => (

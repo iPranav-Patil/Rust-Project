@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Toast from "./Toast";
+import { API_URL } from "../context/Config";
 
 const Products = ({ product, title }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,7 +64,7 @@ const Products = ({ product, title }) => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/addtocart",
+        `${API_URL}/addtocart`,
         itemWithEmailAndCategory
       );
       console.log("Success:", response.data);

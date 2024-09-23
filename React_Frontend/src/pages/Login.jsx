@@ -6,6 +6,7 @@ import useSignIn from "react-auth-kit/hooks/useSignIn";
 import Toast from "../components/Toast";
 
 import logo from "../assets/logo.svg";
+import { API_URL } from "../context/Config";
 
 const Login = () => {
   const signIn = useSignIn();
@@ -26,16 +27,11 @@ const Login = () => {
     }));
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // console.log(formData);
-      const response = await axios.post(
-        "http://127.0.0.1:8000/login",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/login`, formData);
       // console.log(response);
       if (
         response.data.user &&
@@ -157,7 +153,7 @@ const Login = () => {
                   name="email"
                   onChange={handleChange}
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full mt-2 px-3 py-2 text-gray-100 bg-transparent outline-none border focus:border-indigo-500 shadow-sm rounded-lg"
                 />
               </div>
               <div>
@@ -167,7 +163,7 @@ const Login = () => {
                   name="password"
                   onChange={handleChange}
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full mt-2 px-3 py-2 text-gray-200 bg-transparent outline-none border focus:border-indigo-500 shadow-sm rounded-lg"
                 />
               </div>
               <button className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">

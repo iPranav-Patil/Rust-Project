@@ -149,6 +149,7 @@ dist
 node_modules
 
 *.sublime*
+.env.*
 
 psd
 thumb

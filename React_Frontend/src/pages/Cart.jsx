@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../context/Config";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const Cart = () => {
     const fetchCartData = async () => {
       try {
         const email_value = handleCookie();
-        const response = await axios.post("http://127.0.0.1:8000/cart", {
+        const response = await axios.post(`${API_URL}/cart`, {
           email: email_value,
         });
 
@@ -91,7 +92,7 @@ const Cart = () => {
 
     try {
       const response = await axios.put(
-        "http://127.0.0.1:8000/cart/quantity",
+        `${API_URL}/cart/quantity`,
         data
       );
       console.log("Success:", response.data);
@@ -128,7 +129,7 @@ const Cart = () => {
     };
 
     try {
-      const response = await axios.delete("http://127.0.0.1:8000/cart/item", {
+      const response = await axios.delete(`${API_URL}/cart/item`, {
         data,
       });
       console.log("Success:", response.data);
@@ -154,7 +155,7 @@ const Cart = () => {
     e.preventDefault();
     try {
       const email_value = handleCookie();
-      const response = await axios.post("http://127.0.0.1:8000/user_data", {
+      const response = await axios.post(`${API_URL}/user_data`, {
         email: email_value,
         address: address,
         number: parseInt(number),
